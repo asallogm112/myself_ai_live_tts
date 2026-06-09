@@ -546,7 +546,7 @@ async def main_broadcast():
                     logger.error(f"❌ 随机插播失败: {e}")
             elif roll < 0.8:
                 try:
-                    from tts_content_gen import generate_and_play_interject
+                    from tts_random_llm import generate_and_play_interject
                     await generate_and_play_interject(tts, player, sent)
                 except ImportError:
                     pass
@@ -572,7 +572,7 @@ async def add_interrupt(text: str):
 
 async def danmu_handler_loop():
     """弹幕处理循环：输入 → 频率/LLM → 入插播队列（延迟导入避免循环依赖）"""
-    import tts_barrage as barrage
+    import tts_reply_barrage as barrage
 
     while True:
         content = await danmu_input_queue.get()
