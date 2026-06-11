@@ -14,7 +14,7 @@ from typing import AsyncIterator
 import httpx
 
 import config
-from tts_broadcast import (
+from main import (
     TTSEngine, RealTimePCMPlayer,
     MsgType, EventType,
     _build_start_session, _build_task_request, _build_finish_session,

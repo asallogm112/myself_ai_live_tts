@@ -279,11 +279,13 @@ def _build_start_session(session_id: str, speaker: str, fmt: str, sr: int) -> Me
         "namespace": "BidirectionalTTS",
         "event": EventType.StartSession,
         "req_params": {
+            "model": "seed-tts-2.0-expressive",
             "speaker": speaker,
             "audio_params": {"format": fmt, "sample_rate": sr, "enable_timestamp": True},
-            "additions": '{"disable_markdown_filter": true}',
+            "additions": '{"context_texts": ["哭泣的语气"]}',
         }
     }
+    # 热情亲切的直播带货语气，自然口语化，像在跟姐妹们聊天推荐好东西
     import json
     msg = Message(type=MsgType.FullClientRequest, flag=MsgTypeFlagBits.WithEvent)
     msg.event = EventType.StartSession
@@ -533,7 +535,7 @@ async def main_broadcast():
                 except Exception as e:
                     logger.error(f"❌ 弹幕插播失败: {e}")
             
-            # 随机插播（缓存 / LLM / 无——三种互斥）
+            # 随机插播（缓存 / LLM / 无 —— 三种互斥）
             roll = random.random()
             if roll < 0.08 and interject_candidates:
                 interject_file = random.choice(interject_candidates)
@@ -544,7 +546,7 @@ async def main_broadcast():
                     player.flush()
                 except Exception as e:
                     logger.error(f"❌ 随机插播失败: {e}")
-            elif roll < 0.8:
+            elif roll < 0.9:
                 try:
                     from tts_random_llm import generate_and_play_interject
                     await generate_and_play_interject(tts, player, sent)
