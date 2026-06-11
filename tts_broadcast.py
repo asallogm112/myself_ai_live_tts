@@ -281,7 +281,7 @@ def _build_start_session(session_id: str, speaker: str, fmt: str, sr: int) -> Me
         "req_params": {
             "speaker": speaker,
             "audio_params": {"format": fmt, "sample_rate": sr, "enable_timestamp": True},
-            "additions": '{"disable_markdown_filter": false}',
+            "additions": '{"disable_markdown_filter": true}',
         }
     }
     import json
