@@ -59,7 +59,7 @@ async def generate_and_play_interject(tts, player, prev_sentence: str):
                     "stream": True,
                     "thinking": {"type": "disabled"},
                     "messages": messages,
-                    "max_tokens": 60,
+                    "max_tokens": 80,
                 },
             ) as response:
                 async for line in response.aiter_lines():

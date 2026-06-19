@@ -28,6 +28,10 @@ llm_base_url = "https://ark.cn-beijing.volces.com/api/v3"
 # ====================== 商品知识库 ======================
 product_info_file = "answer.txt"
 
+# ====================== TTS 合成参数 ======================
+# 控制 TTS 的语气风格，详见火山引擎文档
+tts_additions = '{"context_texts": ["热情亲切的直播带货语气，自然口语化，像在跟姐妹们聊天推荐好东西"], "model_type": 4}'
+
 # ====================== 口播LLM生成 Prompt ======================
 llm_content_system_prompt = (
     "你是卖女鞋的直播间主播，正在口播带货。"

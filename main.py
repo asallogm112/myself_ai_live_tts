@@ -282,10 +282,9 @@ def _build_start_session(session_id: str, speaker: str, fmt: str, sr: int) -> Me
             "model": "seed-tts-2.0-expressive",
             "speaker": speaker,
             "audio_params": {"format": fmt, "sample_rate": sr, "enable_timestamp": True},
-            "additions": '{"context_texts": ["哭泣的语气"]}',
+            "additions": config.tts_additions,
         }
     }
-    # 热情亲切的直播带货语气，自然口语化，像在跟姐妹们聊天推荐好东西
     import json
     msg = Message(type=MsgType.FullClientRequest, flag=MsgTypeFlagBits.WithEvent)
     msg.event = EventType.StartSession
